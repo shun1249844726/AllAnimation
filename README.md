@@ -1,28 +1,7 @@
 # AllAnimation
 
+### NO BB 上代码
 ```java
-package com.lexinsmart.xushun.allanimation;
-
-import android.animation.Animator;
-import android.animation.AnimatorInflater;
-import android.animation.AnimatorSet;
-import android.animation.ObjectAnimator;
-import android.animation.PropertyValuesHolder;
-import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.AppCompatButton;
-import android.view.animation.AlphaAnimation;
-import android.view.animation.Animation;
-import android.view.animation.AnimationSet;
-import android.view.animation.RotateAnimation;
-import android.view.animation.ScaleAnimation;
-import android.view.animation.TranslateAnimation;
-import android.widget.Button;
-import android.widget.Toast;
-
-import butterknife.BindView;
-import butterknife.ButterKnife;
-import butterknife.OnClick;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -46,6 +25,8 @@ public class MainActivity extends AppCompatActivity {
     Button buttonAnimatorset;
     @BindView(R.id.button_xml)
     Button buttonXml;
+    @BindView(R.id.button_interpolator)
+    Button buttonInterpolator;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -222,21 +203,39 @@ public class MainActivity extends AppCompatActivity {
         set.start();
 
     }
+
     /**
      * xml 中使用属性动画
-     *
-     *  animator：对应代码中的ValueAnimator类。
-
-        objectAnimator：对应代码中的ObjectAnimator类。
-
-        set：对应代码中的AnimatorSet类。
+     * <p>
+     * animator：对应代码中的ValueAnimator类。
+     * <p>
+     * objectAnimator：对应代码中的ObjectAnimator类。
+     * <p>
+     * set：对应代码中的AnimatorSet类。
      */
     @OnClick(R.id.button_xml)
-    public void xml(){
-        Animator animator = AnimatorInflater.loadAnimator(this,R.animator.scalex);
+    public void xml() {
+        Animator animator = AnimatorInflater.loadAnimator(this, R.animator.scalex);
         animator.setTarget(buttonXml);
         animator.start();
     }
+    /**
+     * 插值器
+     * 更多在线插值器  ：![Interpolator](http://inloop.github.io/interpolator/)
+     */
+    @OnClick(R.id.button_interpolator)
+    public void interpolator(){
+        ObjectAnimator scaleX = ObjectAnimator.ofFloat(buttonInterpolator,"scaleX",0f,1f);
+        ObjectAnimator scaleY = ObjectAnimator.ofFloat(buttonInterpolator,"scaleY",0f,1f);
+
+        AnimatorSet set = new AnimatorSet();
+        set.playTogether(scaleX,scaleY);
+        set.setInterpolator(new MyInterpolator());
+        set.setDuration(3000);
+        set.start();
+
+    }
 }
+
 
 ```
