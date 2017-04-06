@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--AnimatedVectorDrawable 是动态的。来连接静态的vectorDrawable 和动态的 objectAnimator-->
+<animated-vector
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:drawable="@drawable/line"
+    tools:targetApi="lollipop">
+    <target
+        android:name="path1"
+        android:animation="@animator/path1">
+    </target>
+
+    <target
+        android:name="path2"
+        android:animation="@animator/path2">
+    </target>
+</animated-vector>

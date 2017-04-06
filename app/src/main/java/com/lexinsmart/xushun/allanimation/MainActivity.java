@@ -5,6 +5,8 @@ import android.animation.AnimatorInflater;
 import android.animation.AnimatorSet;
 import android.animation.ObjectAnimator;
 import android.animation.PropertyValuesHolder;
+import android.graphics.drawable.Animatable;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.AppCompatButton;
@@ -15,6 +17,8 @@ import android.view.animation.RotateAnimation;
 import android.view.animation.ScaleAnimation;
 import android.view.animation.TranslateAnimation;
 import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import butterknife.BindView;
@@ -45,12 +49,17 @@ public class MainActivity extends AppCompatActivity {
     Button buttonXml;
     @BindView(R.id.button_interpolator)
     Button buttonInterpolator;
+    @BindView(R.id.textView)
+    TextView textView;
+    @BindView(R.id.imageView)
+    ImageView imageView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
+
     }
 
     /**
@@ -237,20 +246,28 @@ public class MainActivity extends AppCompatActivity {
         animator.setTarget(buttonXml);
         animator.start();
     }
+
     /**
      * 插值器
      * 更多在线插值器  ：![Interpolator](http://inloop.github.io/interpolator/)
      */
     @OnClick(R.id.button_interpolator)
-    public void interpolator(){
-        ObjectAnimator scaleX = ObjectAnimator.ofFloat(buttonInterpolator,"scaleX",0f,1f);
-        ObjectAnimator scaleY = ObjectAnimator.ofFloat(buttonInterpolator,"scaleY",0f,1f);
+    public void interpolator() {
+        ObjectAnimator scaleX = ObjectAnimator.ofFloat(buttonInterpolator, "scaleX", 0f, 1f);
+        ObjectAnimator scaleY = ObjectAnimator.ofFloat(buttonInterpolator, "scaleY", 0f, 1f);
 
         AnimatorSet set = new AnimatorSet();
-        set.playTogether(scaleX,scaleY);
+        set.playTogether(scaleX, scaleY);
         set.setInterpolator(new MyInterpolator());
         set.setDuration(3000);
         set.start();
 
+    }
+    @OnClick(R.id.imageView)
+    public void animated(){
+        Drawable drawable = imageView.getDrawable();
+        if(drawable instanceof Animatable){
+            ((Animatable) drawable).start();
+        }
     }
 }
