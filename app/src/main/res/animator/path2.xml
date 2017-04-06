@@ -3,8 +3,14 @@
     android:duration="500"
     android:interpolator="@android:anim/bounce_interpolator"
     android:propertyName="pathData"
-    android:valueFrom="M 20,20 L 50,20 80,20"
-    android:valueTo="M 20,20 L 50,50 80,20"
+    android:valueFrom="
+    M 20,20
+    L 50,20
+    L 80,20"
+    android:valueTo="
+    M 20,20
+    L 50,50
+    L 80,20"
     android:valueType="pathType">
 
 </objectAnimator>

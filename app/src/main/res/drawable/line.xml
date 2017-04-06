@@ -1,10 +1,9 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!--vectorDrawable  是静态的svg图形-->
+<?xml version="1.0" encoding="utf-8"?><!--vectorDrawable  是静态的svg图形-->
 <vector xmlns:android="http://schemas.android.com/apk/res/android"
     android:width="200dp"
     android:height="200dp"
-    android:viewportHeight="100"
-    android:viewportWidth="100">
+    android:viewportHeight="200"
+    android:viewportWidth="200">
     <group>
         <!-- 如果指定属性为 pathData，
              则要添加一个属性 android:strokeLineCap="pathType",
@@ -13,7 +12,7 @@
             android:name="path1"
             android:pathData="
             M 20,80
-            L 50,80 80,80"
+            L 80,80"
             android:strokeColor="#000"
             android:strokeLineCap="round"
             android:strokeWidth="5" />
@@ -21,10 +20,12 @@
             android:name="path2"
             android:pathData="
             M 20,20
-            L 50,20 80,20"
+            L 80,20"
             android:strokeColor="#000"
             android:strokeLineCap="round"
-            android:strokeWidth="5" />
+            android:strokeWidth="5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
     </group>
 
 </vector>

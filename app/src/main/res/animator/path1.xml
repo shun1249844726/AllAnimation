@@ -5,10 +5,12 @@
     android:propertyName="pathData"
     android:valueFrom="
             M 20,80
-            L 50,80 80,80"
+            L 50,80
+            L 80,80"
     android:valueTo="
             M 20,80
-            L 50,50 80,80"
+            L 50,50
+            L 80,80"
     android:valueType="pathType">
 
 </objectAnimator>
